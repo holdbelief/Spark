@@ -4,4 +4,9 @@
   <artifactId>spark</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
+  <modules>
+  	<module>exampleonnet</module>
+
+  	<module>bjsxt</module>
+  </modules>
 </project>
