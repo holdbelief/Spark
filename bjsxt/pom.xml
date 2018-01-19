@@ -10,5 +10,6 @@
   <modules>
   	<module>SparkJavaOperator</module>
   	<module>SparkScalaOperator</module>
+  	<module>Traffic</module>
   </modules>
 </project>
