@@ -1,10 +1,10 @@
 ----------------------------------------------------------------
-Wed Feb 28 11:59:30 CST 2018:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-0161-da90-ae85-00000d3878c8 
-on database directory /tmp/spark-c8680c5f-552b-411a-85bc-1a27eec25a08/metastore with class loader sun.misc.Launcher$AppClassLoader@75b84c92 
+Wed Feb 28 13:36:42 CST 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-0161-dae9-abb0-00000a03e488 
+on database directory /tmp/spark-0ef86c67-a63a-4e3e-82d7-15de67df3437/metastore with class loader sun.misc.Launcher$AppClassLoader@5a4b4b50 
 Loaded from file:/home/faith/Repository/Programs/apache-maven-3.3.9/repository/org/apache/derby/derby/10.10.2.0/derby-10.10.2.0.jar
 java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_141-8u141-b15-3-b15
+java.runtime.version=1.7.0_79-b15
 user.dir=/home/faith/Repository/GitRepo/eclipse-workspace/spark/my/SparkScalaOperator_my
 os.name=Linux
 os.arch=amd64

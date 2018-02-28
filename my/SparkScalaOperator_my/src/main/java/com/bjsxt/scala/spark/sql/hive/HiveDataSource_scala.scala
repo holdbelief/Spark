@@ -4,10 +4,16 @@ import org.apache.spark.SparkConf
 import org.apache.spark.SparkContext
 import org.apache.spark.sql.hive.HiveContext
 
-object HiveDataSource {
+
+object HiveDataSource_scala {
   def main(args: Array[String]): Unit = {
-    val conf = new SparkConf().setMaster("local").setAppName("HiveDataSource")
+    val conf = new SparkConf()
+//      .setMaster("local")
+      .setAppName("HiveDataSource_scala")
+
     val sc = new SparkContext(conf);
+    sc.setLogLevel("ERROR")
+    
     val hiveContext = new HiveContext(sc)
     
     hiveContext.sql("show databases").show()
@@ -48,5 +54,7 @@ object HiveDataSource {
     
     // 将goodStudentsDF里面的值写入到Hive表中，如果表不存在，会自动创建然后将数据插入到表中
     goodStudentsDF.write.saveAsTable("good_student_infos")
+    
+    sc.stop()
   }
 }
