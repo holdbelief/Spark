@@ -11,5 +11,7 @@
   <modules>
   	<module>Traffic_my</module>
     <module>SparkScalaOperator_my</module>
+    <module>tt</module>
+    <module>Test1</module>
   </modules>
 </project>
