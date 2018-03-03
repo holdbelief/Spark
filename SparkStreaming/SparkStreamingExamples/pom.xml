@@ -2,8 +2,13 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>faith</groupId>
-    <artifactId>exampleonnet</artifactId>
+    <artifactId>SparkStreaming</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>wc</artifactId>
+  <artifactId>SparkStreamingExamples</artifactId>
+  <packaging>pom</packaging>
+  <modules>
+  	<module>WordCount</module>
+  	<module>WC</module>
+  </modules>
 </project>
