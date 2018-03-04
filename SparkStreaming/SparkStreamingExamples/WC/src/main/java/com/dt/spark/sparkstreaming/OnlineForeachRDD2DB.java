@@ -77,12 +77,25 @@ public class OnlineForeachRDD2DB {
 			});
 			
 //			word_count.print();
+			
+			/*
+			 * 将word_count的内容写入Mysql
+			 */
 			word_count.foreachRDD(new VoidFunction<JavaPairRDD<String, Integer>>() {
 
 				private static final long serialVersionUID = 1233407929957594025L;
 
 				@Override
 				public void call(JavaPairRDD<String, Integer> pairRdd) throws Exception {
+					
+					/*
+					 * foreahPartition与foreach的不同是：
+					 * foreach：每循环一次是一个数据
+					 * foreachPartition：每循环一次是一个Partition，处理一个Partition里面的所有数据，
+					 * 					注意VoidFunction的参数是Iterator，也就是每隔Partition里面数据的迭代
+					 * foreachPartition常常用于向数据库例如数据，当使用foreach时候，每次循环是一个数据，那么每个数据
+					 * 就要创建一个数据链连接，foreachPartition是每一个Partition创建一个数据库链接。
+					 */
 					pairRdd.foreachPartition(new VoidFunction<Iterator<Tuple2<String,Integer>>>() {
 
 						private static final long serialVersionUID = 4506422371753940828L;
