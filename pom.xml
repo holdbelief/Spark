@@ -6,8 +6,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<modules>
-		<module>exampleonnet</module>
-
 		<module>bjsxt</module>
 		<module>my</module>
 		<module>SparkCore</module>
@@ -53,6 +51,12 @@
 			<version>1.6.2</version>
 			<scope>runtime</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>6.0.6</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -63,8 +67,79 @@
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
+					<executable>${JAVA8_HOME}/bin/javac</executable>
 				</configuration>
 			</plugin>
+
+			<!-- 
+				使用maven-assembly-plugin插件打包的方式与maven-dependency-plugin插件打包的方式不同的是
+				maven-assembly-plugin插件会将依赖的jar包中的class打散到目录中，这样在
+				spark-submit方式下，不会抛出ClassNotFoundException异常。
+			-->
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+<!-- 					<archive> -->
+<!-- 						<manifest> -->
+<!-- 							<mainClass>com.itsenlin.Helloworld</mainClass> -->
+<!-- 						</manifest> -->
+<!-- 					</archive> -->
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id> <!-- this is used for inheritance merges -->
+						<phase>package</phase> <!-- bind to the packaging phase -->
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- 
+				下面这种打包方式会将依赖的jar包放在打包之后的lib文件夹下面，但是这种方式
+				在spark-submit运行的时候会抛出ClassNotFoundException异常，找不到com.mysql.jdbc.Driver
+				spark的相关类找得到是因为spark安装包中有spark-assembly-1.6.2-hadoop2.6.0.jar这个包
+				其他包就会抛出ClassNotFoundException
+			-->
+			<!-- <plugin> -->
+			<!-- <artifactId>maven-jar-plugin</artifactId> -->
+			<!-- <configuration> -->
+			<!-- <archive> -->
+			<!-- <manifest> -->
+			<!-- 告知 maven-jar-plugin添加一个 Class-Path元素到 MANIFEST.MF文件，以及在Class-Path元素中包括所有依赖项 -->
+			<!-- <addClasspath>true</addClasspath> -->
+			<!-- 所有的依赖项应该位于 lib文件夹 -->
+			<!-- <classpathPrefix>lib/</classpathPrefix> -->
+			<!-- 当用户使用 lib命令执行JAR文件时，使用该元素定义将要执行的类名 -->
+			<!-- <mainClass>com.itsenlin.Helloworld</mainClass> -->
+			<!-- </manifest> -->
+			<!-- </archive> -->
+			<!-- </configuration> -->
+			<!-- </plugin> -->
+			<!-- <plugin> -->
+			<!-- <artifactId>maven-dependency-plugin</artifactId> -->
+			<!-- <executions> -->
+			<!-- <execution> -->
+			<!-- <id>copy-dependencies</id> -->
+			<!-- <phase>prepare-package</phase> -->
+			<!-- <goals> -->
+			<!-- <goal>copy-dependencies</goal> -->
+			<!-- </goals> -->
+			<!-- <configuration> -->
+			<!-- ${project.build.directory}为Maven内置变量，缺省为target -->
+			<!-- <outputDirectory>${project.build.directory}/classes/lib</outputDirectory> -->
+			<!-- 表示是否不包含间接依赖的包 -->
+			<!-- <excludeTransitive>false</excludeTransitive> -->
+			<!-- 表示复制的jar文件去掉版本信息 -->
+			<!-- <stripVersion>true</stripVersion> -->
+			<!-- </configuration> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
+			<!-- </plugin> -->
 		</plugins>
 	</build>
 

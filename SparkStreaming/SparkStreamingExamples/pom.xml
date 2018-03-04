@@ -8,7 +8,6 @@
   <artifactId>SparkStreamingExamples</artifactId>
   <packaging>pom</packaging>
   <modules>
-  	<module>WordCount</module>
   	<module>WC</module>
   </modules>
 </project>
