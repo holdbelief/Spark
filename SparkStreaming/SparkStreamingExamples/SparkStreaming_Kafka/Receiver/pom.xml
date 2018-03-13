@@ -3,13 +3,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>faith</groupId>
-		<artifactId>SparkStreamingExamples</artifactId>
+		<artifactId>SparkStreaming_Kafka</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>WC</artifactId>
+	<artifactId>Receiver</artifactId>
 
-	<dependencies>
-
-	</dependencies>
 
 </project>

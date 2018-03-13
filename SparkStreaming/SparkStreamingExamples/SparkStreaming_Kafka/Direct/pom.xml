@@ -2,13 +2,8 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>faith</groupId>
-    <artifactId>SparkStreaming</artifactId>
+    <artifactId>SparkStreaming_Kafka</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>SparkStreamingExamples</artifactId>
-  <packaging>pom</packaging>
-  <modules>
-  	<module>WC</module>
-  	<module>SparkStreaming_Kafka</module>
-  </modules>
+  <artifactId>Direct</artifactId>
 </project>
