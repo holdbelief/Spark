@@ -1,2 +1,12 @@
 spark-assembly-1.6.0-hadoop2.6.0.jar
 spark-examples-1.6.0-hadoop2.6.0.jar
+**/classes
+**/target
+**/test-classes
+**/.settings
+**/*.bak
+**/.classpath
+**/.factorypath
+**/.classpath/
+**/.settings
+**/.cache-main
